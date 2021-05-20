@@ -204,7 +204,7 @@ public class StockFormDialog extends Dialog{
         //Initialize the value getting the first item
         stockWarehouse.setValue(listaWarehouse.get(0));
         stockWarehouse.setRequiredIndicatorVisible(true);
-        setColspan(stockWarehouse, 1);
+        setColspan(stockWarehouse, 2);
         binder.forField(stockWarehouse).asRequired("Warehoyse is required")
         	.bind(Stock::getWarehouse,Stock::setWarehouse);
         
@@ -233,7 +233,7 @@ public class StockFormDialog extends Dialog{
         	.bind(Stock::getStatus,Stock::setStatus);
 
         // Create the form layout and setting the fields
-        productData = new FormLayout(stockProduct, stockLot, stockSerialNumber,
+        productData = new FormLayout(stockWarehouse, stockProduct, stockLot, stockSerialNumber,
         		stockQuantity,stockStatus, stockExpirationDate);
         productData.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 2));
 

@@ -24,9 +24,11 @@ import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.router.PageTitle;
 import com.example.application.views.main.MainView;
+import com.example.application.views.mwarehousemaster.WarehouseMasterView;
 import com.example.application.views.dashboard.DashboardView;
 import com.example.application.views.productmaster.ProductMasterView;
 import com.example.application.views.stocklist.StockListView;
+import com.example.application.security.SecurityConfiguration;
 import com.example.application.views.about.AboutView;
 
 /**
@@ -93,7 +95,10 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
+    	Tab adminTab = createTab("Warehouse Master", WarehouseMasterView.class);
+    	adminTab.setVisible(SecurityConfiguration.isAdmin());
         return new Tab[]{createTab("Dashboard", DashboardView.class),
+                adminTab,
                 createTab("Product Master", ProductMasterView.class), createTab("Stock List", StockListView.class),
                 createTab("About", AboutView.class)};
     }

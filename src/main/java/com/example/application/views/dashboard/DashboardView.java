@@ -55,6 +55,8 @@ public class DashboardView extends VerticalLayout {
     		listaLats.add(lat);
     		marker.setLatLng(lat);
     		marker.setDraggable(true);
+    		marker.setDraggable(false);
+    		marker.bindTooltip(warehouse.getName());
     		marker.onClick((e) -> {
     			UI.getCurrent().getSession().setAttribute("id", warehouse.getId().toString());
     			UI.getCurrent().navigate("products");
