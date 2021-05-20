@@ -21,7 +21,9 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.AbstractStreamResource;
 import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.router.PageTitle;
 import com.example.application.views.main.MainView;
@@ -66,6 +68,9 @@ public class MainView extends AppLayout {
 //        layout.setPadding(true);
         
         Avatar avatar = new Avatar(auth.getName());
+        
+        avatar.setImage("https://www.pikpng.com/pngl/m/5-53300_png-file-user-icon-clipart.png");
+        
         ContextMenu contextMenu = new ContextMenu();
         contextMenu.setOpenOnClick(true);
         contextMenu.setTarget(avatar);
@@ -78,6 +83,8 @@ public class MainView extends AppLayout {
         layout.add(avatar/*,logout*/);
         return layout;
     }
+    
+    
 
     private Component createDrawerContent(Tabs menu) {
         VerticalLayout layout = new VerticalLayout();
