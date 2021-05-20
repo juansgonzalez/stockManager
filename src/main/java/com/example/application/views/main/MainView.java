@@ -10,6 +10,7 @@ import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
+import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
@@ -61,11 +62,20 @@ public class MainView extends AppLayout {
         viewTitle = new H1();
         layout.add(viewTitle);
 
-        Anchor logout = new Anchor("logout", "Log out");
-        layout.setPadding(true);
-        Avatar avatar = new Avatar(auth.getName());
+//        Anchor logout = new Anchor("logout", "Log out");
+//        layout.setPadding(true);
         
-        layout.add(avatar,logout);
+        Avatar avatar = new Avatar(auth.getName());
+        ContextMenu contextMenu = new ContextMenu();
+        contextMenu.setOpenOnClick(true);
+        contextMenu.setTarget(avatar);
+        contextMenu.addItem("Porfile", e->{
+        	
+        });
+        contextMenu.addItem("LogOut", e->{
+        	contextMenu.getUI().ifPresent(ui -> ui.getPage().setLocation("/ogout"));
+        });
+        layout.add(avatar/*,logout*/);
         return layout;
     }
 
